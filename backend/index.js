@@ -1,24 +1,23 @@
 import express from 'express'
-import mongoose from 'mongoose'
 import dotenv from 'dotenv'
+import connectDB from './config/db.js'
+import router from './routes/auth.js';
+
+
 
 dotenv.config();
-
 const app = express();
+connectDB();
 
-mongoose.connect(process.env.MONGO_URI).then(()=>{
-    console.log("database is connected")
-})
-.catch((err)=>{
-    console.log(err)
-})
 
-app.get('/',(req,res)=>{
+app.use('/',router)
+
+app.get('/helo',(req,res)=>{
     res.send("helooo")
 })
 
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 8000
 
 app.listen(PORT,()=>{
     console.log(`i am reAdy at port ${PORT}`)
