@@ -5,7 +5,7 @@ import User from '../model/user.js'
 
 
 
- export const registeration =async (req,res)=>{
+ export const signup =async (req,res)=>{
     const{firstName, lasttName, email, password  } = req.body;
     try{
         let user = await User.findOne({email});
@@ -33,5 +33,33 @@ import User from '../model/user.js'
     }
 };
 
+export const login =async (req,res)=>{
+    const { email,password } = req.body;
+    try{
+        let user = await User.findOne({email});
+        if(!user){
+            return res.status(400).json({err:"user not exist"})
+        }
 
+        const verify = await bcrypt.compare(password,user.password)
+        if(!verify){
+            return res.status(400).json({err:"incorrect password"})
+        }
+        const payload = {
+            user:{
+                id: user.id,
+            },
+        };
+
+        jwt.sign(payload,process.env.JWT_SECRET,{expiresIn:3600}),(err,token)=>{
+            if(err)throw err;
+            res.json({token})
+        }
+    }catch{
+        console.log(err.message );
+        res.status(500).json.json({err:err.message})
+    }
+}
+
+ 
 
