@@ -2,7 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import connectDB from './config/db.js'
 import authRoute from './routes/auth.js'
-// import protectedRoute from './routes/protected.js'
+import protectedRoute from './routes/protected.js'
 
 
 
@@ -12,8 +12,8 @@ connectDB();
 
 app.use(express.json())
 
-app.use('/',authRoute)
-// app.use('/protected',protectedRoute)
+app.use('/auth',authRoute)
+app.use('/protected',protectedRoute)
 
 
 app.get('/helo',(req,res)=>{
@@ -21,7 +21,7 @@ app.get('/helo',(req,res)=>{
 })
 
 
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 9000
 
 app.listen(PORT,()=>{
     console.log(`i am reAdy at port ${PORT}`)
