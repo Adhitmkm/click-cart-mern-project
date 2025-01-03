@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./auth.css";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [input, setInput] = useState({
@@ -28,13 +29,13 @@ const Login = () => {
 
   return (
     <>
-      <div className="login-signup">
-        <div className="loginsignup-card">
+      <div className="login-signup" id="login">
+        <div className="card">
         <h1>CLICK CART</h1>
         <h4>Welcome Back!</h4>
         <form onSubmit={handleSubmitEvent} className="form-auth">
-          <div>
             <label>Email</label>
+          <div>
             <input
               name="email"
             //   value={input.email}
@@ -43,8 +44,8 @@ const Login = () => {
             />
           </div>
 
-          <div>
             <label>Password</label>
+          <div>
             <input
               name="password"
             //   value={input.password}
@@ -52,14 +53,14 @@ const Login = () => {
               onChange={handleInput}
             />
           </div>
-          <p>Reset Password</p>
+          <p className="reset">Reset Password</p>
 
           <div className="btn">
                 <button className="btn-submit">Submit</button>
             </div>
             <div className="alredy">
             <p>Dont have an account? </p>
-            {/* <Link to='/'>Login</Link> */}
+            <Link to='/'>Signup</Link>
             </div>
         </form>
       </div>

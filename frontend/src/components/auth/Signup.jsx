@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './auth.css'
 import { useState } from "react";
 // import { Link } from "react-router-dom";
@@ -50,8 +51,8 @@ const Signup = ()=> {
 
   return (
     <>
-    <div className="login">
-        <div className="login-card">
+    <div className="login-signup">
+        <div className="card">
         <h1>Sign Up...</h1>
 
         <form onSubmit={handleSubmitEvent} className="form-auth">
@@ -107,7 +108,8 @@ const Signup = ()=> {
             </div>
             <div className="alredy">
             <p>Alredy have an account? </p>
-            {/* <Link to='/'>Login</Link> */}
+            <Link to='/login'>Login</Link>
+
             </div>
             
 
