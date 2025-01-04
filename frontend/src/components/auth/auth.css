@@ -11,10 +11,6 @@
     width: 100%;
     height: 100vh;
 }
-/* #login {
-    width: 100%;
-    height: 100vh;
-} */
 
 .login-signup .card{
     padding: 20px;
@@ -23,9 +19,9 @@
     width: 500px;
     border-radius: 7px ;
     border: 1px solid;
-
-
-
+}
+#logincard {
+    height: 500px;
 }
 
 .form-auth {
