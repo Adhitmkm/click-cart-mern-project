@@ -1,34 +1,36 @@
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import './auth.css'
-import { useState } from "react";
 import axios from 'axios';
+import { useState } from 'react';
 
 const Signup = ()=> {
-    const [input, setInput]=useState({
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      conformPassword: ""
-  });
 
-    const handleSubmitEvent =(e)=>{
+  const [input, setInput]=useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    conformPassword: ""
+})
+
+    const handleSubmitEvent =async(e)=>{
         e.preventDefault()
 
+        try {
+        const response = await axios.post('http://localhost:9000/auth/signup', input)
+        console.log(response.data.accessToken,"data");
 
-        axios.post('http://localhost:9000/auth/signup', { input: 'example data' })
+        const accessToken = response.data.accessToken
+        localStorage.setItem('accessToken',accessToken)
+        
+          
+        } catch (error) {
+          console.log(error);
+          
+        }
 
-        .then(response => {
-      
-          console.log(response.data); // Handle the response data
-      
-        })
-      
-        .catch(error => {
-      
-          console.error('Error:', error); // Handle any errors
-      
-        });
+
+    
 
         if(input.firstName.trim() =="" && input.lastName.trim() =="" && input.email.trim() =="" && input.password.trim() =="" && input.conformPassword.trim() =="" ){
             // console.log(input,"valuess1");
@@ -63,6 +65,7 @@ const Signup = ()=> {
         }));
 
       };
+      Navigate("./")
 
   return (
     <>
@@ -116,7 +119,7 @@ const Signup = ()=> {
                 placeholder="conformpassword"
                 onChange={handleInput}/>
             </div>
-            <p className="reset">Reset Password</p>
+            <p className="reset">Forgot Password</p>
 
             <div className="btn">
                 <button className="btn-submit">Submit</button>

@@ -1,0 +1,84 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.update-main{
+    width: 100%;
+    /* height: 100vh; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.update-main .update {
+    background-color: rgb(255, 255, 255);
+    width: 500px;
+    height: 600px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 00.1);
+    
+}
+.update  {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.update h1 {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.update .input-boxes {
+    gap: 10px;
+    margin-left: 10px;
+}
+.input-boxes input {
+    width: 97.5%;
+    height: 40px;
+    margin-bottom: 10px;
+    margin-top: 2px;
+    border-radius: 5px;
+    border: 0.1px solid;
+    font-size: medium;
+    font-weight: 200px;
+}
+.input-boxes label {
+    font-size: 17px;
+}
+.input-boxes .reset {
+    text-align: justify;
+}
+.input-boxes .btn {
+    gap: 10px;
+    display: flex;
+    gap: 20px;
+    
+    
+}
+.btn .btn-submit {
+    width: 20%;
+    height: 35px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 0.1px;
+    background-color: black;
+    color: white;
+    margin-top: 12px;
+    cursor: pointer;
+
+}
+.btn .btn-cancel {
+    width: 20%;
+    height: 35px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 0.1px;
+    background-color: black;
+    color: white;
+    margin-top: 12px;
+    cursor: pointer;
+    
+}
+

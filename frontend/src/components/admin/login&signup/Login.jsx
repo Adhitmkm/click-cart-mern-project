@@ -9,22 +9,16 @@ const Login = () => {
     password: "",
   });
 
-  const handleSubmitEvent = (e) => {
+  const handleSubmitEvent =async(e) => {
     e.preventDefault();
 
-    axios.post('http://localhost:9000/auth/login', { input: 'example data' })
-
-  .then(response => {
-
-    console.log(response.data); // Handle the response data
-
-  })
-
-  .catch(error => {
-
-    console.error('Error:', error); // Handle any errors
-
-  });
+    try{
+      const response = await axios.post('http://localhost:9000/auth/login',input)
+      console.log(response.data,"data");
+      
+    }catch(error){
+      console.log(error)
+    }
     
     if (input.email.trim() == "" && input.password.trim == ""){
 
@@ -51,6 +45,7 @@ const Login = () => {
 
   return (
     <>
+
       <div className="login-signup" >
         <div className="card" id="login">
         <h1>CLICK CART</h1>
@@ -75,7 +70,7 @@ const Login = () => {
               onChange={handleInput}
             />
           </div>
-          <p className="reset">Reset Password</p>
+          <p className="reset">Forgot Password</p>
 
           <div className="btn">
                 <button className="btn-submit">Submit</button>

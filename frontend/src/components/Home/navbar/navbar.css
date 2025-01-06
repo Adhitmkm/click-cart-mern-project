@@ -1,0 +1,87 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.nav {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    justify-content: space-between;
+    height:70px;
+    width: auto;
+    align-items: center;
+    padding: 50px 20px ;
+    /* border-radius: 2px; */
+    border: 1px solid;
+    gap: 20px;
+    
+
+}
+.logo {
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+
+}
+.logo-1 {
+    width: 150px;
+}
+.pages {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    width: 28%;
+    gap: 10px;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    font-size: 20px;
+}
+
+.icons {
+    display: flex;
+    width: 10%;
+    justify-content: space-between;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    gap: 3px;
+}
+
+.icons .icon-2{
+  position: absolute;
+  right: -4px;
+  background-color: black;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  top: 13px;
+  padding-left: 4.5px;
+  padding-top: 1.5px;
+
+
+}
+.icons .icon-2 p{
+    font-size: 11px;
+    color: white;
+    font-weight: 400;
+}
+.serch-1 {
+    cursor: pointer;
+}
+.profile-1 {
+    cursor: pointer;
+}
+.cart-1 {
+    cursor: pointer;
+}
+.home Link{
+    cursor: pointer;
+    
+}
+.collection {
+    cursor: pointer;
+}
+.about {
+    cursor: pointer;
+}
+.contact {
+    cursor: pointer;
+}

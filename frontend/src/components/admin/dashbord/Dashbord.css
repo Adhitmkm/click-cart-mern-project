@@ -1,0 +1,95 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.main {
+   height: 100vh; 
+   width: 100%;
+   background-color: rgb(56, 255, 56);
+   border-radius: px solid;
+   /* display: flex; */
+
+}
+.main .dashbord {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    height: 100vh;
+    min-width: 250px;
+   padding: 50px 10px;
+
+        /* justify-content: center; */
+    text-align: center;
+    flex-direction: column;
+    border: 1px solid;
+    border-radius: 5px;
+
+ 
+    
+    
+}
+.main .pages {
+    width: 85%;
+    height: 100%;
+}
+/* .dashbord .dashbord-head {
+    text-align: center;
+    background-color: rgb(55, 55, 218);
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 10px;
+} */
+.user {
+    margin-top: 40px;
+    width: 100%;
+    height: 35px;
+    background-color: rgb(182, 174, 174);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 9px;
+    border: 1px;
+    margin-bottom: 10px;
+    cursor: pointer;
+
+}
+.admin {
+    width: 100%;
+    height: 35px;
+    background-color: rgb(182, 174, 174);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 9px;
+    border: 1px;
+    cursor:pointer;
+    margin-bottom: 10px;
+}
+.settings {
+    width: 100%;
+    height: 35px;
+    background-color: rgb(182, 174, 174);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 9px;
+    border: 1px;
+    cursor:pointer;
+    margin-bottom: 10px;
+}
+.logout {
+    width: 100%;
+    height: 35px;
+    background-color: rgb(182, 174, 174);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 9px;
+    border: 1px;
+    cursor:pointer;
+    margin-bottom: 10px;
+}
