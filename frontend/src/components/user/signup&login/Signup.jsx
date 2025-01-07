@@ -2,6 +2,7 @@ import { Link, Navigate } from 'react-router-dom';
 import './auth.css'
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = ()=> {
 
@@ -13,17 +14,19 @@ const Signup = ()=> {
     conformPassword: ""
 })
 
+const naigate = useNavigate()
+
     const handleSubmitEvent =async(e)=>{
         e.preventDefault()
 
         try {
-        const response = await axios.post('http://localhost:9000/auth/signup', input)
+        const response = await axios.post('http://localhost:7000/auth/signup', input)
         console.log(response.data.accessToken,"data");
 
         const accessToken = response.data.accessToken
         localStorage.setItem('accessToken',accessToken)
         
-          
+          naigate('/home')
         } catch (error) {
           console.log(error);
           
@@ -108,6 +111,7 @@ const Signup = ()=> {
                 name="password"
                 value={input.password}
                 placeholder="password"
+                autoComplete="current-password"
                 onChange={handleInput}/>
             </div>
 
@@ -116,6 +120,7 @@ const Signup = ()=> {
                 <input type="password"
                 name="conformPassword"
                 value={input.conformPassword}
+                autoComplete="current-password"
                 placeholder="conformpassword"
                 onChange={handleInput}/>
             </div>

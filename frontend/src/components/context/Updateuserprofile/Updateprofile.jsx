@@ -14,7 +14,7 @@ export const UpdateprofileProvider = ({children})=>{
         conformPassword: ""
     })
 
-    console.log(input,'====================================');
+    // console.log(input,'====================================');
    
 
     return (
