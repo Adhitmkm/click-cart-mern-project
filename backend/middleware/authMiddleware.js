@@ -4,8 +4,10 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const authMiddleware = (req, res, next) => {
+  console.log("hiiiiii")
   try {
     const authHeader = req.headers.authorization;
+    console.log(authHeader,"hedddddd")
     if (!authHeader) {
       console.log("authorization failed");
       return res
@@ -27,8 +29,9 @@ const authMiddleware = (req, res, next) => {
     //     console.log(decode,';;;;;;;;;;;;;;;;;')
     //     req.userId = decode.userId;
     //     next();
-
+    console.log("hiiiiiiiii")
     const decode = jwt.decode(token);
+    console.log(decode,"11111111111111111")
     req.userId = decode.id;
     next();
   } catch (error) {

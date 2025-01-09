@@ -1,0 +1,123 @@
+    *{
+    padding: 0px;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.profile-main {
+    width: 100%;
+    /* height: 100vh; */
+    margin-bottom: 5%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    
+}
+.sections {
+    width: 70%;
+    height: 50vh;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.1px #e0e0e0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+
+    /* flex-wrap: wrap; */
+}
+.sections .section-1 {
+    height: 100%;
+    width: 100vh;
+    background-color: rgb(255, 255, 255);
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+}
+.section-1 .image {
+    height: 150px;
+    width: 150px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    border: 1px solid #ffffff;
+}
+
+.section-1 .image::after {
+    content: "Image";
+    font-size: 14px;
+    color: #ffffff;
+}
+.section-1 .section-1-deatails {
+    display: flex;
+}
+.section-1 h3 {
+    padding: 5px;
+}
+.section-1-button .button {
+    width: 110px;
+    height: 30px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 0.1px;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    margin-top: 12px;
+    cursor: pointer;
+}
+.section-1-button button:hover {
+    background-color: #000000;
+    color: rgb(128, 128, 128);
+    
+}
+
+.sections .section-2 {
+    height: 100%;
+    width: 100vh;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.section-2 .data {
+    /* background-color: aliceblue; */
+    /* border: 1px solid; */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height:50vh;
+    width: 100%;
+}
+.data .profile {
+display: flex;
+align-items: center;
+justify-content: center;
+margin-top: 30px;
+margin-bottom: 60px;
+text-align: center;
+}
+.data h4 {
+
+    font-size: 18px;
+    font-weight: normal;
+    margin: 0 20px 8px;
+    color: #333;
+}
+.data h5 {
+    margin: 10px 20px 5px;
+    font-size: 16px;
+    color: #666;
+
+
+}

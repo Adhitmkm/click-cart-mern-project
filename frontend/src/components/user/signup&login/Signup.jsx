@@ -18,7 +18,7 @@ const naigate = useNavigate()
 
     const handleSubmitEvent =async(e)=>{
         e.preventDefault()
-
+        
         try {
         const response = await axios.post('http://localhost:7000/auth/signup', input)
         console.log(response.data.accessToken,"data");

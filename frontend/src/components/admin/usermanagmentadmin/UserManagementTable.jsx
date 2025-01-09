@@ -1,168 +1,104 @@
-import Dashbord from "../dashbord/Dashbord"
-import "./UserManagementTable.css"
+import axios from "axios";
+import { useEffect, useState } from "react";
+import "./UserManagementTable.css";
+import { useNavigate } from "react-router-dom";
+
 function UserManagementTable() {
+  const [userdata, setdata] = useState([]);
+
+  const navigate = useNavigate();
+
+  // Fetch user details from the backend
+  const usersdetails = async () => {
+    try {
+      const response = await axios.get("http://localhost:7000/admin/users");
+      console.log(response.data, "user ready");
+      setdata(response.data.user);
+    } catch (e) {
+      console.log("Error fetching user details:", e);
+    }
+  };
+
+  useEffect(() => {
+    usersdetails();
+  }, []);
+
+  const cancel = ()=>{
+    navigate('/admin/dashbord')
+  }
+
+  const deleteuser = async ()=>{
+    console.log(userdata._id,"delete2222")
+    console.log(userdata?._id,"dataaaaaaaiddddddd")
+    try {
+      const response = await axios.delete(
+       ` http://localhost:7000/admin/deleteusers?id=${userdata?._id}`,
+        
+      );
+      console.log(userdata._id,"delete2222")
+      console.log(response,"dataadelete");
+
+    } catch (error) {
+      console.log(error, "wwwwww");
+    }
+  }
+
+
+
   return (
     <>
-    <div className='main'>
-    <Dashbord/>
-      <div className='main-2'> 
-          <div className='section-1'>
-              <div className='heading'>
-              <h1>User Managment</h1>
-              <h3>x</h3>
-              </div>
-          </div>
-          <div className='section-2'>
-              <div className='newbutton'>
-                <div className='button'>
-                  <button>NEW</button>
-                  </div>
-                  <div className='input'>
-                <input
-                placeholder='serch'
-                />
-              </div>
-              </div>
+    
+          <div className="container">
+            {/* <div>
+            <Dashbord/>
+            </div> */}
 
-          </div>
-
-          <div className='sectio-3'>
-            <table>
-              
-                <tr>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Email</th>
-                  <th>Role</th>
-                  <th>Disabled</th>
-                  <th>Action</th>
-
-                </tr>
-
-                <tr>
-                  <th>itmeme</th>
-                  <th>t</th>
-                  <th>email.com</th>
-                  <th>admin</th>
-                  <th>no</th>
-                  <th><button>View</button>
-                  <button>Edit</button>
-                  <button>Delete</button>
-                  </th>
-                </tr>
-              
-            </table>
-            
-
-          </div>
-
+      <div className="header">
+        <h1>User Management</h1>
+        <button className="new-button" onClick={deleteuser}>NEW</button>
+        <button className="new-button" onClick={cancel}>Cancel</button>
       </div>
+
+      <div className="search-bar">
+        <input type="text" placeholder="Search..." />
+      </div>
+
+      <table className="user-table">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Account Disabled</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {userdata.length > 0 ? (
+            userdata.map((item, index) => (
+              <tr key={index}>
+                <td>{item.firstName}</td>
+                <td>{item.lastName}</td>
+                <td>{item.email}</td>
+                <td>{item.disabled ? "Yes" : "No"}</td>
+                <td>
+                  <button className="action-button view">View</button>
+                  <button className="action-button edit">Edit</button>
+                  <button className="action-button delete" onClick={deleteuser}>Delete</button>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="5" className="no-data">No users found</td>
+            </tr>
+          )}
+        </tbody>
+      </table>
     </div>
     </>
-  )
+
+  );
 }
 
-export default UserManagementTable
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import { useState } from "react";
-
-// // Replace these imports with your actual Button and Input components
-// // import Button from "../ui/Button"; // Update the path to your Button component
-// // import Input from "../ui/Input";   // Update the path to your Input component
-
-// export default function UserManagement() {
-//   // State for users
-  
-
-
-//   return (
-//     <div className="p-4">
-//       <div className="mb-4">
-//         <h1 className="text-2xl font-bold">User Management</h1>
-//       </div>
-
-//       <div className="flex justify-between mb-4">
-//         <button>New User</button>
-//         <input
-//           type="search"
-//           placeholder="Search users..."
-//           className="max-w-xs"
-//           value={searchTerm}
-//           onChange={(e) => setSearchTerm(e.target.value)}
-//         />
-//       </div>
-
-//       <div className="border rounded-lg overflow-hidden">
-//         <table className="w-full">
-//           <thead className="bg-blue-600 text-white">
-//             <tr>
-//               <th className="p-2 text-left">First Name</th>
-//               <th className="p-2 text-left">Last Name</th>
-//               <th className="p-2 text-left">Email</th>
-//               <th className="p-2 text-left">Role</th>
-//               <th className="p-2 text-left">Actions</th>
-//             </tr>
-//           </thead>
-//           <tbody>
-//             {filteredUsers.map((user, index) => (
-//               <tr key={index} className="border-t">
-//                 <td className="p-2">{user.firstName}</td>
-//                 <td className="p-2">{user.lastName}</td>
-//                 <td className="p-2">{user.email}</td>
-//                 <td className="p-2">{user.role}</td>
-//                 <td className="p-2">
-//                   <div className="flex gap-2">
-//                     <div size="sm" >
-//                       View
-//                     </div>
-//                     <div size="sm" >
-//                       Edit
-//                     </div>
-//                   </div>
-//                 </td>
-//               </tr>
-//             ))}
-//           </tbody>
-//         </table>
-//       </div>
-//     </div>
-//   );
-// }
+export default UserManagementTable;

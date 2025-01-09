@@ -1,11 +1,12 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import connectDB from './config/db.js'
-import authRoute from './routes/auth.js'
-import protectedRoute from './routes/protected.js'
 import cors from 'cors'
-import auth from './middleware/authMiddleware.js'
-import userRouter from './routes/user.js'
+import userauthRoute from './routes/Auth/userauth.js'
+import adminauthRoute from './routes/Auth/adminauth.js'
+import userRouter from './routes/User/user.js'
+import adminRouter from './routes/admin/admin.js'
+// import superadminauthRoute from './routes/Auth/superadminauth.js'
 
 
 dotenv.config();
@@ -14,18 +15,25 @@ connectDB();
 
 app.use(cors({
     origin:["http://localhost:5173"],
-    methods:["GET","POST","PATCH","DELETE"],
+    methods:["GET","POST","PUT","DELETE"],
     credentials: true
 
 }))
 app.use(express.json())
 
-app.use('/auth',authRoute)
-app.use('/protected',protectedRoute)
-
-// user auth
+// user
+app.use('/auth',userauthRoute)
 app.use('/user',userRouter)
 
+// admin
+app.use('/auth',adminauthRoute)
+app.use('/admin',adminRouter)
+
+// superadmin
+// app.use('/auth',superadminauthRoute)
+
+//admin route
+app.use('/admin',adminauthRoute)
 
 
 const PORT = process.env.PORT || 9000

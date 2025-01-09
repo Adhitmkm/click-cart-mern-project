@@ -1,9 +1,9 @@
-import { Link, Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './auth.css'
 import axios from 'axios';
 import { useState } from 'react';
 
-const Signup = ()=> {
+const AdminSignup = ()=> {
 
   const [input, setInput]=useState({
     firstName: "",
@@ -12,12 +12,12 @@ const Signup = ()=> {
     password: "",
     conformPassword: ""
 })
-
+const navigate = useNavigate();
     const handleSubmitEvent =async(e)=>{
         e.preventDefault()
 
         try {
-        const response = await axios.post('http://localhost:9000/auth/signup', input)
+        const response = await axios.post('http://localhost:7000/auth/admin/signup', input)
         console.log(response.data,"data");
         
           
@@ -62,13 +62,13 @@ const Signup = ()=> {
         }));
 
       };
-      Navigate("./")
+      navigate("/admin/dashbord")
 
   return (
     <>
     <div className="login-signup">
         <div className="card">
-        <h1>Sign Up...</h1>
+        <h1>Sign Up Admin...</h1>
 
         <form onSubmit={handleSubmitEvent} className="form-auth">
            
@@ -135,4 +135,4 @@ const Signup = ()=> {
   )
 }
 
-export default Signup
+export default AdminSignup

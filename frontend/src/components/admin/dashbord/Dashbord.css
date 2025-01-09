@@ -1,11 +1,7 @@
-*{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-}
+
 .main {
    height: 100vh; 
-   width: 100%;
+   width: 20%;
    background-color: rgb(56, 255, 56);
    border-radius: px solid;
    /* display: flex; */

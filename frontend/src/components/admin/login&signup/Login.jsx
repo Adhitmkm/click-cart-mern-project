@@ -2,19 +2,25 @@ import { useState } from "react";
 import "./auth.css";
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const AdminLogin = () => {
   const [input, setInput] = useState({
     email: "",
     password: "",
   });
 
+  const navigate = useNavigate();
+
   const handleSubmitEvent =async(e) => {
     e.preventDefault();
 
     try{
-      const response = await axios.post('http://localhost:9000/auth/login',input)
+      const response = await axios.post('http://localhost:7000/auth/admin/login',input)
+      const accessToken = response.data.accessToken
+      localStorage.setItem('accessToken',accessToken)
       console.log(response.data,"data");
+      navigate("/admin/dashbord")
       
     }catch(error){
       console.log(error)
@@ -48,7 +54,7 @@ const Login = () => {
 
       <div className="login-signup" >
         <div className="card" id="login">
-        <h1>CLICK CART</h1>
+        <h1> Admin Login page</h1>
         <h4>Welcome Back!</h4>
         <form onSubmit={handleSubmitEvent} className="form-auth">
             <label>Email</label>
@@ -86,4 +92,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default AdminLogin;
